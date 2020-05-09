@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 指定springioc容器扫描的包 -->
+	<context:component-scan base-package="com.gzj.spring.beans.annotiation">
+	</context:component-scan> 
+
+	<!-- resource-pattern指定扫描的资源 --> 
+<!-- 	<context:component-scan 
+	base-package="com.gzj.spring.beans.annotiation"
+	resource-pattern="repository/*.class">
+	</context:component-scan> -->
+
+ <!-- context:exclude-filter子节点 指定不扫描的资源 -->	 	
+<!--	<context:component-scan 
+	base-package="com.gzj.spring.beans.annotiation">	
+	 <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>
+-->		
+
+	<!--context:include-filter 子节点指定只扫描该资源,要把use-default-filters设为false-->		
+<!--	<context:component-scan 
+	base-package="com.gzj.spring.beans.annotiation" use-default-filters="false">	
+	<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>
+-->
+
+	<!-- 使用assignable方式 -->
+<!--  	<context:component-scan 
+	base-package="com.gzj.spring.beans.annotiation">	
+	 <context:exclude-filter type="assignable" expression="com.gzj.spring.beans.annotiation.repository.UserRepository"/>
+	</context:component-scan>
+-->
+
+<!--  <context:component-scan 
+	base-package="com.gzj.spring.beans.annotiation" use-default-filters="false">	
+	 <context:include-filter type="assignable" expression="com.gzj.spring.beans.annotiation.repository.UserRepository"/>
+	</context:component-scan>
+-->	
+
+</beans>

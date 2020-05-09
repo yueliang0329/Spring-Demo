@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 使用scope属性配置bean的作用域，默认singleton，容器初始化时创建bean实例在整个容器的生命周期内只创建这一个bean
+	prototype，原型的，容器初始化时不创建bean实例，每次请求时创建一个新的实例 -->
+	<bean id="car" class="com.gzj.spring.beans.autowire.Car"
+	p:brand="Audi" p:price="300000" scope="prototype"></bean>
+	
+</beans>
