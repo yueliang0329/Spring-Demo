@@ -7,7 +7,26 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<bean id="AMCalculatorImpl" class="com.gzj.spring.aop.xml.AMCalculatorImpl">
+	<bean id="AMCalculatorImpl" class="com.gzj.spring.aop.xml.AMCalculatorImpl"></bean>
 	
-	</bean>
+	<!-- 配置切面的bean -->
+	<bean id="LoggingAspect" class="com.gzj.spring.aop.xml.LoggingAspect"></bean>
+	<bean id="ValidateAspect" class="com.gzj.spring.aop.xml.ValidateAspect"></bean>
+	
+	<!-- 配置AOP -->
+	<aop:config>
+		<!-- 配置切点表达式 -->
+		<aop:pointcut expression="execution(* com.gzj.spring.aop.xml.AMCalculatior.*(int, int))" id="pointcut"/>
+		<!-- 配置切面及通知 -->
+		<aop:aspect ref="LoggingAspect" order="2">	 
+			<aop:before method="beforeMethod" pointcut-ref="pointcut"/>	
+			<aop:after  method="afterMethod" pointcut-ref="pointcut"/>
+			<aop:after-throwing method="afterthrowing" pointcut-ref="pointcut" throwing="ex"/>
+			<aop:after-returning method="afterReturning" pointcut-ref="pointcut" returning="result"/>		 
+		<!-- <aop:around method="aroundMethod" pointcut-ref="pointcut"/> -->
+		</aop:aspect>
+		<aop:aspect ref="ValidateAspect" order="1">
+			<aop:before method="validateArgs" pointcut-ref="pointcut"/>	
+		</aop:aspect>
+	</aop:config>
 </beans>
