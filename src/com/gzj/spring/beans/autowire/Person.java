@@ -36,6 +36,4 @@ public class Person {
 	public String toString() {
 		return "Person [name=" + name + ", address=" + address + ", car=" + car + "]";
 	}
-	
-	
 }

@@ -13,6 +13,7 @@ public class CashierImpl implements Cashier {
 	@Autowired
 	private OrderService service;
 	
+	@Transactional
 	@Override
 	public void checkout(int user_id, List<Integer> order_ids) {
 		// TODO Auto-generated method stub
