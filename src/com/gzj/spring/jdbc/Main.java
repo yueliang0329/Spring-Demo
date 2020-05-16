@@ -22,7 +22,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext-jdbc.xml");
-		JdbcTemplate jdbcTemplate = (JdbcTemplate) ctx.getBean("JdbcTemplate");	
+		JdbcTemplate jdbcTemplate = (JdbcTemplate) ctx.getBean("jdbcTemplate");	
 		NamedParameterJdbcTemplate namedParameterJdbcTemplate = (NamedParameterJdbcTemplate) ctx.getBean("namedParameterJdbcTemplate");	
 		
 		//更新单条数据		
@@ -52,7 +52,7 @@ public class Main {
 		//获取单个列的值，或做统计查询
 		sql="select count(user_id) from tbl_user";
 		long count = jdbcTemplate.queryForObject(sql, Long.class);
-		//System.out.println(count);
+		System.out.println(count);
 		
 		//namedParameterJdbcTemplate 可以给参数具名
 		 sql="insert into  tbl_user (user_name,password) values (:userName,:password)";
@@ -64,6 +64,6 @@ public class Main {
 		 u.setUserName("look");
 		 u.setPassword("321654");
 		 SqlParameterSource paramSource = new BeanPropertySqlParameterSource(u);
-		 namedParameterJdbcTemplate.update(sql, paramSource);
+		// namedParameterJdbcTemplate.update(sql, paramSource);
 	}
 }
